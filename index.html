@@ -9,13 +9,17 @@
 <body>
    <div class="container">
       <div class="tab-box">
-         <button class="tab-btn">Diamant</button>
+         <button class="tab-btn active">Diamant</button>
          <button class="tab-btn">Zlato</button>
          <button class="tab-btn">Stříbro</button>
          <button class="tab-btn">Měď</button>
+         <button class="tab-btn">Železo</button>
+         <div class="line">
+
+         </div>
       </div>
       <div class="content-box">
-         <div class="content">
+         <div class="content active">
             <h2>Diamant</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, natus reprehenderit voluptatibus voluptates quae nisi commodi incidunt totam ad voluptate accusantium dolorem, earum unde nostrum distinctio dolore. Saepe, est accusantium.</p>
          </div>
@@ -31,7 +35,33 @@
             <h2>Měď</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, natus reprehenderit voluptatibus voluptates quae nisi commodi incidunt totam ad voluptate accusantium dolorem, earum unde nostrum distinctio dolore. Saepe, est accusantium.</p>
          </div>
+         <div class="content">
+            <h2>Železo</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, natus reprehenderit voluptatibus voluptates quae nisi commodi incidunt totam ad voluptate accusantium dolorem, earum unde nostrum distinctio dolore. Saepe, est accusantium.</p>
+         </div>
       </div>
    </div>
+
+   <script>
+      let tabs = document.querySelectorAll('.tab-btn')
+      let allContent = document.querySelectorAll('.content')
+
+      tabs.forEach((tab, index)=>{
+         tab.addEventListener('click', (e)=>{
+            tabs.forEach(tab=>{tab.classList.remove('active')})
+            tab.classList.add('active')
+
+            let line = document.querySelector('.line')
+            line.style.width = e.target.offsetWidth + 'px'
+            line.style.left = e.target.offsetLeft + 'px'
+
+            allContent.forEach(content=>{
+               content.classList.remove('active')
+            })
+            allContent[index].classList.add('active')
+         })
+      })
+      
+   </script>
 </body>
 </html>
